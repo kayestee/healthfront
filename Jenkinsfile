@@ -2,6 +2,8 @@ pipeline {
   agent {
     label 'jenkinslave'
   }
+  tools {nodejs "nodejs"}
+
   environment {
     AWS_ECR_REGION = 'us-east-2'
     AWS_ECR_URL = 'https://097816535043.dkr.ecr.us-east-2.amazonaws.com'
@@ -10,7 +12,6 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'pwd'
         sh 'sh npm run build'
 	script {
 		docker.withRegistry("${env.AWS_ECR_URL}","${env.AWS_ECR_CRED}"){
