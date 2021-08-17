@@ -2,7 +2,7 @@ pipeline {
   agent {
     label 'jenkinslave'
   }
-  tools {nodejs "nodejs"}
+  tools {nodejs "NodeJS"}
 
   environment {
     AWS_ECR_REGION = 'us-east-2'
